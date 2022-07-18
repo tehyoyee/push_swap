@@ -23,7 +23,7 @@ t_node	*ft_nodelast(t_node *node);
 t_node	*ft_nodenew(int value);
 void	ft_nodeprint(t_node *node1, t_node *node2);
 int		ft_atoi(const char *str);
-void	ft_nodeprint_r(t_node *node);
+void	ft_nodeprint_r(t_node *node1, t_node *node2);
 void	op_sa(t_stack a);
 void	op_sb(t_stack b);
 void	op_ss(t_stack a, t_stack b);
@@ -35,5 +35,8 @@ void	ft_nodedel_bottom(t_node **node);
 void	op_ra(t_stack *a);
 void	op_rb(t_stack *a);
 void	op_rr(t_stack *a, t_stack *b);
+void	op_rra(t_stack *a);
+void	op_rrb(t_stack *b);
+void	op_rrr(t_stack *a, t_stack *b);
 
 #endif
