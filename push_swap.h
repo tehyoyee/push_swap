@@ -39,5 +39,7 @@ void	op_rra(t_stack *a);
 void	op_rrb(t_stack *b);
 void	op_rrr(t_stack *a, t_stack *b);
 void	ft_putstr(char *s);
+void	sort_case2(int a, int b);
+void	sort_case3(int a, int b, int c);
 
 #endif

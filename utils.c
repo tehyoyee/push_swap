@@ -129,9 +129,22 @@ void	ft_nodedel_bottom(t_node **node)
 	temp = NULL;
 }
 
+size_t	ft_strlen(const char *s)
+{
+	size_t	result;
+
+	result = 0;
+	while (*s)
+	{
+		result++;
+		s++;
+	}
+	return (result);
+}
+
 void	ft_putstr(char *s)
 {
 	if (!s)
 		return ;
-	write(fd, s, ft_strlen(s));
+	write(1, s, ft_strlen(s));
 }
