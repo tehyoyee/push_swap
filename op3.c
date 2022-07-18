@@ -14,7 +14,7 @@ void	op_rra(t_stack *a)
 	last->prev = NULL;
 	last->next = a->head;
 	a->head = last;
-	printf("rra\n");
+	ft_putstr("rra\n");
 }
 
 void	op_rrb(t_stack *b)
@@ -31,12 +31,12 @@ void	op_rrb(t_stack *b)
 	last->prev = NULL;
 	last->next = b->head;
 	b->head = last;
-	printf("rrb\n");
+	ft_putstr("rrb\n");
 }
 
 void	op_rrr(t_stack *a, t_stack *b)
 {
-	printf("rrr\n");
+	ft_putstr("rrr\n");
 	op_ra(a);
 	op_rb(b);
 }

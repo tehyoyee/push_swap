@@ -6,7 +6,7 @@ void	op_pa(t_stack *a, t_stack *b)
 //		return ;
 //	ft_nodeadd_front(&a->head, ft_nodenew(b->head->value));
 //	ft_nodedel(&b->head);
-	printf("pa\n");
+	ft_putstr("pa\n");
 	t_node	*tmp;
 
 	tmp = b->head;
@@ -28,7 +28,7 @@ void	op_pb(t_stack *a, t_stack *b)
 {
 	t_node	*tmp;
 
-	printf("pb\n");
+	ft_putstr("pb\n");
 	tmp = a->head;
 	a->head = a->head->next;
 	a->head->prev = NULL;
@@ -56,7 +56,7 @@ void	op_ra(t_stack *a)
 	tmp->prev = ft_nodelast(a->head);
 	ft_nodelast(a->head)->next = tmp;
 	tmp->next = NULL;
-	printf("ra\n");
+	ft_putstr("ra\n");
 }
 
 void	op_rb(t_stack *b)
@@ -71,12 +71,12 @@ void	op_rb(t_stack *b)
 	tmp->prev = ft_nodelast(b->head);
 	ft_nodelast(b->head)->next = tmp;
 	tmp->next = NULL;
-	printf("rb\n");
+	ft_putstr("rb\n");
 }
 
 void	op_rr(t_stack *a, t_stack *b)
 {
-	printf("rr\n");
+	ft_putstr("rr\n");
 	op_ra(a);
 	op_rb(b);
 }

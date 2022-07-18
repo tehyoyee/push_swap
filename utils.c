@@ -128,3 +128,10 @@ void	ft_nodedel_bottom(t_node **node)
 	free(temp);
 	temp = NULL;
 }
+
+void	ft_putstr(char *s)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+}

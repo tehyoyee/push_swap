@@ -13,7 +13,7 @@ void	op_sa(t_stack a)
 {
 	if (a.head != NULL)
 		swap_value(&(a.head)->value, &((a.head)->next)->value);
-	printf("sa\n");
+	ft_putstr("sa\n");
 
 }
 
@@ -21,7 +21,7 @@ void	op_sb(t_stack b)
 {
 	if (b.head != NULL)
 		swap_value(&(b.head)->value, &((b.head)->next)->value);
-	printf("sb\n");
+	ft_putstr("sb\n");
 }
 
 void	op_ss(t_stack a, t_stack b)
@@ -30,5 +30,5 @@ void	op_ss(t_stack a, t_stack b)
 		swap_value(&(a.head)->value, &((a.head)->next)->value);
 	if (b.head != NULL)
 		swap_value(&(b.head)->value, &((b.head)->next)->value);
-	printf("ss\n");
+	ft_putstr("ss\n");
 }
