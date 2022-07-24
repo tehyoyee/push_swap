@@ -184,3 +184,60 @@ int	node_count(t_node *node)
 	}
 	return result;
 }
+
+int	is_numeric(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[0] == '-')
+		i++;
+	while (str[i])
+	{
+		if (!('0' <= str[i] && str[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	check_decimal(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (!is_numeric(argv[i]))
+		{
+			ft_putstr("argument error");
+			exit(1);
+		}
+		i++;
+	}
+}
+
+int	check_reduplicate(t_node *a, int argc)
+{
+	int	i;
+	int	j;
+	t_node	*tmp;
+
+	tmp = a;
+	while (i < argc - 1)
+	{
+		while (j < argc - 2)
+		{
+			a = a->next;
+			if (tmp->value == a->value)
+			{
+				return (0);
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+		tmp = tmp->next;
+	}
+	return (1);
+}

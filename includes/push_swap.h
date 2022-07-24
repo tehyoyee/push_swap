@@ -42,5 +42,7 @@ void	ft_putstr(char *s);
 void	sort_case2(int a, int b);
 void	sort_case3(int a, int b, int c);
 int		node_count(t_node *node);
+void	check_decimal(int argc, char **argv);
+int		check_reduplicate(t_node *a, int argc);
 
 #endif

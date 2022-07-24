@@ -146,11 +146,17 @@ int	main(int argc, char *argv[])
 	t_stack	a;
 	t_stack	b;
 
+	check_decimal(argc, argv);
 	if (argc == 3)
 		sort_case2(ft_atoi(argv[1]), ft_atoi(argv[2]));
 	if (argc == 4)
 		sort_case3(ft_atoi(argv[1]), ft_atoi(argv[2]), ft_atoi(argv[3]));
 	init_stack(&a, &b, argc, argv);
+	if (!check_reduplicate(a.head, argc))
+	{
+		ft_putstr("reduplicated arguments");
+		exit(1);
+	}
 	sort(&a, &b);
 	// ft_nodeprint(a.head, b.head);
 	// ft_nodeprint_r(a.head, b.head);
