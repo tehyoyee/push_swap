@@ -31,7 +31,6 @@ void	ft_nodeadd_front(t_node **node, t_node *new)
 		return ;
 	new->next = *node;
 	*node = new;
-	printf("sdf\n");
 
 }
 
@@ -217,27 +216,61 @@ void	check_decimal(int argc, char **argv)
 	}
 }
 
-int	check_reduplicate(t_node *a, int argc)
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] < s2[i])
+			return (s1[i] - s2[i]);
+		if (s1[i] > s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
+
+int	check_reduplicate(int argc, char **argv)
 {
 	int	i;
 	int	j;
-	t_node	*tmp;
 
-	tmp = a;
-	while (i < argc - 1)
+	i = 1;
+	while (i < argc)
 	{
-		while (j < argc - 2)
+		j = i + 1;
+		while (j < argc)
 		{
-			a = a->next;
-			if (tmp->value == a->value)
-			{
+			if (!ft_strcmp(argv[i], argv[j]))
 				return (0);
-			}
 			j++;
 		}
-		j = 0;
 		i++;
-		tmp = tmp->next;
 	}
 	return (1);
+
+
+	// int	i;
+	// int	j;
+	// t_node	*tmp;
+
+	// tmp = a;
+	// while (i < argc - 1)
+	// {
+	// 	while (j < argc - 2)
+	// 	{
+	// 		a = a->next;
+	// 		if (tmp->value == a->value)
+	// 		{
+	// 			return (0);
+	// 		}
+	// 		j++;
+	// 	}
+	// 	j = 0;
+	// 	i++;
+	// 	tmp = tmp->next;
+	// }
+	// return (1);
 }
