@@ -50,20 +50,31 @@ t_node	*ft_nodenew(int value)
 
 void	ft_nodeprint(t_node *node1, t_node *node2)
 {
+	t_node	*tmp1;
+	t_node	*tmp2;
+
 	if (!node1)
 		return ;
+	tmp1 = node1;
 	printf("==========================\n");
 	printf("==========================\n");
 	printf("Stack A \n");
 	while (node1)
 	{
 		printf("node->value : %d\n", node1->value);
+		if (node1->next == tmp1)
+			break;
 		node1 = node1->next;
 	}
 	printf("Stack B \n");
+	if (!node2)
+		return ;
+	tmp2 = node2;
 	while (node2)
 	{
 		printf("node->value : %d\n", node2->value);
+		if (node2->next == tmp2)
+			break;
 		node2 = node2->next;
 	}
 	printf("==========================\n");
@@ -72,30 +83,37 @@ void	ft_nodeprint(t_node *node1, t_node *node2)
 
 void	ft_nodeprint_r(t_node *node1, t_node *node2)
 {
+	t_node	*tmp1;
+	t_node	*tmp2;
+
+	node1 = node1->prev;
+	tmp1 = node1;
 	if (!node1)
 		return ;
-	node1 = ft_nodelast(node1);
 	printf("==================================\n");
 	printf("========= R Stack A ============\n");
 	printf("==================================\n");
-	while (node1)
+	while (tmp1 != node1->prev)
 	{
 		printf("node->value : %d\n", node1->value);
 		node1 = node1->prev;
 	}
+	printf("node->value : %d\n", node1->value);
 	printf("==================================\n");
 	printf("==================================\n");
-	node2 = ft_nodelast(node2);
-	if (!node2)
-		return ;
 	printf("==================================\n");
 	printf("========= R Stack B ============\n");
 	printf("==================================\n");
-	while (node2)
+	if (!node2)
+		return ;
+	node2 = node2->prev;
+	tmp2 = node2;
+	while (tmp2 != node2->prev)
 	{
 		printf("node->value : %d\n", node2->value);
 		node2 = node2->prev;
 	}
+	printf("node->value : %d\n", node2->value);
 	printf("==================================\n");
 	printf("==================================\n");
 }
@@ -147,4 +165,22 @@ void	ft_putstr(char *s)
 	if (!s)
 		return ;
 	write(1, s, ft_strlen(s));
+}
+
+int	node_count(t_node *node)
+{
+	int		result;
+	t_node	*tmp;
+
+	if (!node)
+		return (0);
+	result = 1;
+	tmp = node;
+	node = node->next;
+	while (node != tmp)
+	{
+		result++;
+		node = node->next;
+	}
+	return result;
 }
