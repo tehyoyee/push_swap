@@ -142,7 +142,7 @@ int	main(int argc, char *argv[])
 	init_stack(&a, &b, argc, argv);
 	init_node_order(&a, argc);
 	ft_nodeprint(a.head, b.head);
-	sort(&a, &b); 
-	ft_nodeprint(a.head, b.head);
+	// sort(&a, &b); 
+	// ft_nodeprint(a.head, b.head);
 	// ft_nodeprint_r(a.head, b.head);
 }
