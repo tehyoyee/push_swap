@@ -1,19 +1,5 @@
 #include "push_swap.h"
 
-void	init_stack(t_stack *a, t_stack *b, int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	a->head = NULL;
-	b->head = NULL;
-	while (i < argc)
-	{
-		ft_nodeadd_back(&(a->head), ft_nodenew(ft_atoi(argv[i++])));
-	}
-	a->head->prev = ft_nodelast(a->head);
-	ft_nodelast(a->head)->next = a->head;
-}
 
 int	find_insert_index(t_node *a, t_node *b, int node_size)
 {
@@ -146,18 +132,17 @@ int	main(int argc, char *argv[])
 	t_stack	a;
 	t_stack	b;
 
+	check_split(&argc, argv);
 	check_decimal(argc, argv);
-	if (!check_reduplicate(argc, argv))
-	{
-		ft_putstr("reduplicated arguments");
-		exit(1);
-	}
+	check_reduplicate(argc, argv);
 	if (argc == 3)
 		sort_case2(ft_atoi(argv[1]), ft_atoi(argv[2]));
 	if (argc == 4)
 		sort_case3(ft_atoi(argv[1]), ft_atoi(argv[2]), ft_atoi(argv[3]));
 	init_stack(&a, &b, argc, argv);
-	sort(&a, &b);
-	// ft_nodeprint(a.head, b.head);
+	init_node_order(&a, argc);
+	ft_nodeprint(a.head, b.head);
+	sort(&a, &b); 
+	ft_nodeprint(a.head, b.head);
 	// ft_nodeprint_r(a.head, b.head);
 }

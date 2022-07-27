@@ -8,6 +8,7 @@
 typedef struct s_node
 {
 	int				value;
+	int				order;
 	struct s_node	*prev;
 	struct s_node	*next;
 }				t_node;
@@ -16,6 +17,7 @@ typedef struct s_stack
 {
 	t_node	*head;
 }				t_stack;
+
 
 void	ft_nodeadd_back(t_node **node, t_node *new);
 void	ft_nodeadd_front(t_node **node, t_node *new);
@@ -44,5 +46,11 @@ void	sort_case3(int a, int b, int c);
 int		node_count(t_node *node);
 void	check_decimal(int argc, char **argv);
 int		check_reduplicate(int argc, char **argv);
+void	exit_perror(char *msg, int num);
+char	**ft_split(char const *s, char c);
+void	check_split(int *argc, char **argv);
+
+void	init_stack(t_stack *a, t_stack *b, int argc, char **argv);
+void	init_node_order(t_stack *a, int argc);
 
 #endif

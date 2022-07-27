@@ -23,6 +23,7 @@ void	ft_nodeadd_back(t_node **node, t_node *new)
 	last = ft_nodelast(*node);
 	last->next = new;
 	new->prev = last;
+	new->order = 0;
 }
 
 void	ft_nodeadd_front(t_node **node, t_node *new)
@@ -60,7 +61,7 @@ void	ft_nodeprint(t_node *node1, t_node *node2)
 	printf("Stack A \n");
 	while (node1)
 	{
-		printf("node->value : %d\n", node1->value);
+		printf("value : %d		order : %d\n", node1->value, node1->order);
 		if (node1->next == tmp1)
 			break;
 		node1 = node1->next;
@@ -184,72 +185,7 @@ int	node_count(t_node *node)
 	return result;
 }
 
-int	is_numeric(char *str)
-{
-	int	i;
 
-	i = 0;
-	if (str[0] == '-')
-		i++;
-	while (str[i])
-	{
-		if (!('0' <= str[i] && str[i] <= '9'))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	check_decimal(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		if (!is_numeric(argv[i]))
-		{
-			ft_putstr("argument error");
-			exit(1);
-		}
-		i++;
-	}
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] < s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] > s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
-}
-
-int	check_reduplicate(int argc, char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (i < argc)
-	{
-		j = i + 1;
-		while (j < argc)
-		{
-			if (!ft_strcmp(argv[i], argv[j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
 
 
 	// int	i;
@@ -273,4 +209,3 @@ int	check_reduplicate(int argc, char **argv)
 	// 	tmp = tmp->next;
 	// }
 	// return (1);
-}

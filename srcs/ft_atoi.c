@@ -36,14 +36,10 @@ int	get_answer(const char *str, int sign)
 	{
 		arr_len++;
 		result = result * 10 + *str - 48;
-		if ((result > 9223372036854775807) && sign == 1)
-			return (-1);
-		if (num_len(result) != arr_len && sign == 1)
-			return (-1);
-		if ((result > 9223372036854775807 + 1UL) && sign == -1)
-			return (0);
-		if (num_len(result) != arr_len && sign == -1)
-			return (0);
+		if ((result > 2147483647) && sign == 1)
+			exit_perror("argument number is more than int_max", 1);
+		if ((result > 2147483648) && sign == -1)
+			exit_perror("argument number is less than int_min", 1);
 		str++;
 	}
 	return (sign * (int)result);
