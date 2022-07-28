@@ -40,8 +40,10 @@ void	op_pb(t_stack *a, t_stack *b)
 {
 	t_node	*tmp;
 
-	ft_putstr("pb\n");
 	tmp = a->head;
+	if (!a->head)
+		return ;
+	ft_putstr("pb\n");
 	if (a->head != a->head->next)
 	{
 		a->head = a->head->next;
@@ -61,7 +63,9 @@ void	op_pb(t_stack *a, t_stack *b)
 	tmp->prev = b->head->prev;
 	(b->head->prev)->next = tmp;
 	b->head->prev = tmp;
-	b->head = tmp;                                                                                                                                                                                                               
+	b->head = tmp;
+	if (!a->head)
+		a->head = NULL;
 }
 
 void	op_ra(t_stack *a)

@@ -6,44 +6,29 @@ void	exit_perror(char *msg, int num)
 	exit(num);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+void	check_reduplicate(int argc, t_node *node1)
 {
-	int	i;
-
-	i = 0;
-	if (*s1 == '+' || *s1 == '-')
-		s1++;
-	if (*s2 == '+' || *s2 == '-')
-		s2++;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] < s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] > s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
-}
-
-int	check_reduplicate(int argc, char **argv)
-{
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	t_node	*temp;
 
 	i = 1;
-	while (i < argc)
+	while (i < argc - 1)
 	{
+		temp = node1->next;
 		j = i + 1;
 		while (j < argc)
 		{
-			if (ft_strcmp(argv[i], argv[j]) == 0)
-				exit_perror("reduplicated arguments", 1);
+			if (node1->value - temp->value == 0)
+			{
+				exit_perror("Error\n", 1);
+			}
+			temp = temp->next;
 			j++;
 		}
+		node1 = node1->next;
 		i++;
 	}
-	return (1);
 }
 
 int	is_numeric(char *str)
@@ -70,7 +55,24 @@ void	check_decimal(int argc, char **argv)
 	while (i < argc)
 	{
 		if (!is_numeric(argv[i]))
-			exit_perror("incorrect argument format", 1);
+			exit_perror("Error\n", 1);
 		i++;
 	}
+}
+
+void	check_sorted(t_node *node, size_t node_size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < node_size - 1)
+	{
+		if (node->order + 1 != (node->next)->order)
+		{
+			return ;
+		}
+		i++;
+		node = node->next;
+	}
+	exit(0);
 }

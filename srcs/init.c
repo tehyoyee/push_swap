@@ -7,7 +7,6 @@ void	init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 	i = 1;
 	a->head = NULL;
 	b->head = NULL;
-
 	while (i < argc)
 	{
 		ft_nodeadd_back(&(a->head), ft_nodenew(ft_atoi(argv[i++])));

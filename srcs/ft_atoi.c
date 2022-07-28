@@ -37,9 +37,9 @@ int	get_answer(const char *str, int sign)
 		arr_len++;
 		result = result * 10 + *str - 48;
 		if ((result > 2147483647) && sign == 1)
-			exit_perror("argument number is more than int_max", 1);
+			exit_perror("Error\n", 1);
 		if ((result > 2147483648) && sign == -1)
-			exit_perror("argument number is less than int_min", 1);
+			exit_perror("Error\n", 1);
 		str++;
 	}
 	return (sign * (int)result);
