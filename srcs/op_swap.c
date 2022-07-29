@@ -30,31 +30,33 @@ void	swap_value_sizet(size_t *a, size_t *b)
 	*b = temp;
 }
 
-void	op_sa(t_stack a)
+void	op_sa(t_stack a, int print)
 {
 	if (a.head != NULL)
 	{
 		swap_value(&(a.head)->value, &((a.head)->next)->value);
 		swap_value_sizet(&(a.head)->order, &((a.head)->next)->order);
 	}
-	ft_putstr("sa\n");
+	if (print == 1)
+		ft_putstr("sa\n");
 }
 
-void	op_sb(t_stack b)
+void	op_sb(t_stack b, int print)
 {
 	if (b.head != NULL)
 	{
 		swap_value(&(b.head)->value, &((b.head)->next)->value);
 		swap_value_sizet(&(b.head)->order, &((b.head)->next)->order);
 	}
-	ft_putstr("sb\n");
+	if (print == 1)
+		ft_putstr("sb\n");
 }
 
 void	op_ss(t_stack a, t_stack b)
 {
-	if (a.head != NULL)
-		swap_value(&(a.head)->value, &((a.head)->next)->value);
-	if (b.head != NULL)
-		swap_value(&(b.head)->value, &((b.head)->next)->value);
+	if (!a.head || !b.head)
+		return ;
+	op_sa(a, 0);
+	op_sb(b, 0);
 	ft_putstr("ss\n");
 }

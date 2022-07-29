@@ -12,6 +12,27 @@
 
 #include "push_swap.h"
 
+static void	free_stack(t_stack *a)
+{
+	t_node	*curr;
+	t_node	*temp;
+	int		i;
+	int		cnt;
+
+	i = 0;
+	cnt = node_count(a->head);
+	if (!a)
+		return ;
+	curr = a->head;
+	while (i < cnt)
+	{
+		temp = curr->next;
+		free(curr);
+		curr = temp;
+		i++;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	a;
@@ -30,4 +51,6 @@ int	main(int argc, char *argv[])
 		push_a_to_b(&a, &b);
 		push_b_to_a(&a, &b);
 	}
+	free_stack(&a);
+	free_stack(&b);
 }

@@ -12,20 +12,7 @@
 
 #include "push_swap.h"
 
-int	num_len(unsigned long long result)
-{
-	int	num_len;
-
-	num_len = 0;
-	while (result > 0)
-	{
-		num_len++;
-		result /= 10;
-	}
-	return (num_len);
-}
-
-int	get_answer(const char *str, int sign)
+static int	get_answer(const char *str, int sign)
 {
 	unsigned long long	result;
 	int					arr_len;

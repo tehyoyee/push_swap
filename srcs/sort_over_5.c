@@ -21,13 +21,13 @@ void	for_small(t_stack *a, t_stack *b, t_range *range)
 void	for_middle(t_stack *a, t_stack *b, t_range *range)
 {
 	op_pb(a, b);
-	op_rb(b);
+	op_rb(b, 1);
 	range->small++;
 }
 
 void	for_big(t_stack *a)
 {
-	op_ra(a);
+	op_ra(a, 1);
 }
 
 void	push_a_to_b(t_stack *a, t_stack *b)
@@ -66,13 +66,13 @@ void	push_b_to_a(t_stack *a, t_stack *b)
 		if (cnt_pos <= (cnt + 1) / 2)
 		{
 			while (b->head->order != cnt)
-				op_rb(b);
+				op_rb(b, 1);
 			op_pa(a, b);
 		}
 		else
 		{
 			while (b->head->order != cnt)
-				op_rrb(b);
+				op_rrb(b, 1);
 			op_pa(a, b);
 		}
 	}

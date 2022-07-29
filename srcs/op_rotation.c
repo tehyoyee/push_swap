@@ -12,25 +12,27 @@
 
 #include "push_swap.h"
 
-void	op_ra(t_stack *a)
+void	op_ra(t_stack *a, int print)
 {
-	ft_putstr("ra\n");
 	if (!a->head || !a->head->next)
 		return ;
 	a->head = a->head->next;
+	if (print == 1)
+		ft_putstr("ra\n");
 }
 
-void	op_rb(t_stack *b)
+void	op_rb(t_stack *b, int print)
 {
 	if (!b->head || !b->head->next)
 		return ;
 	b->head = b->head->next;
-	ft_putstr("rb\n");
+	if (print == 1)
+		ft_putstr("rb\n");
 }
 
 void	op_rr(t_stack *a, t_stack *b)
 {
 	ft_putstr("rr\n");
-	op_ra(a);
-	op_rb(b);
+	op_ra(a, 0);
+	op_rb(b, 0);
 }

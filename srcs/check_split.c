@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+static void	ft_free(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		arr[i] = NULL;
+	}
+	free(arr);
+	arr = NULL;
+}
+
 void	check_split(int *argc, char **argv, int i)
 {
 	int		cnt;
@@ -35,7 +49,7 @@ void	check_split(int *argc, char **argv, int i)
 			while (k > i)
 				argv[k-- - 1] = arr[--cnt];
 		}
+		ft_free(arr);
 		i++;
-		free(arr);
 	}
 }

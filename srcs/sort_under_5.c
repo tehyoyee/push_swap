@@ -15,7 +15,7 @@
 void	sort_case_2(t_stack *a)
 {
 	if (a->head->order > (a->head->next)->order)
-		op_sa(*a);
+		op_sa(*a, 1);
 }
 
 void	sort_case_3(t_stack *a, size_t order_max)
@@ -23,26 +23,26 @@ void	sort_case_3(t_stack *a, size_t order_max)
 	if (a->head->order == order_max)
 	{
 		if ((a->head->next)->order < (a->head->prev)->order)
-			op_ra(a);
+			op_ra(a, 1);
 		else
 		{
-			op_sa(*a);
-			op_rra(a);
+			op_sa(*a, 1);
+			op_rra(a, 1);
 		}
 	}
 	else if ((a->head->next)->order == order_max)
 	{
 		if (a->head->order < (a->head->prev)->order)
 		{
-			op_sa(*a);
-			op_ra(a);
+			op_sa(*a, 1);
+			op_ra(a, 1);
 		}
 		else
-			op_rra(a);
+			op_rra(a, 1);
 	}
 	else if ((a->head->prev)->order == order_max)
 		if (a->head->order > (a->head->next)->order)
-			op_sa(*a);
+			op_sa(*a, 1);
 }
 
 void	sort_case_4(t_stack *a, t_stack *b, size_t node_size)
@@ -53,12 +53,12 @@ void	sort_case_4(t_stack *a, t_stack *b, size_t node_size)
 	if (order_min_pos <= 1)
 	{
 		while (a->head->order != 0)
-			op_ra(a);
+			op_ra(a, 1);
 	}
 	else
 	{
 		while (a->head->order != 0)
-			op_rra(a);
+			op_rra(a, 1);
 	}
 	op_pb(a, b);
 	sort_case_3(a, get_order_max(a->head, 3));
@@ -73,24 +73,24 @@ void	sort_case_5(t_stack *a, t_stack *b, size_t node_size)
 	if (order_min_pos <= 2)
 	{
 		while (a->head->order != 0)
-			op_ra(a);
+			op_ra(a, 1);
 	}
 	else
 	{
 		while (a->head->order != 0)
-			op_rra(a);
+			op_rra(a, 1);
 	}
 	op_pb(a, b);
 	order_min_pos = get_order_pos(a->head, node_size, 1);
 	if (order_min_pos <= 2)
 	{
 		while (a->head->order != 1)
-			op_ra(a);
+			op_ra(a, 1);
 	}
 	else
 	{
 		while (a->head->order != 1)
-			op_rra(a);
+			op_rra(a, 1);
 	}
 }
 
