@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_split.c                                      :+:      :+:    :+:   */
+/*   op_rotation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taehykim <taehykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/29 14:27:28 by taehykim          #+#    #+#             */
-/*   Updated: 2022/07/29 14:27:29 by taehykim         ###   ########.fr       */
+/*   Created: 2022/07/29 14:28:41 by taehykim          #+#    #+#             */
+/*   Updated: 2022/07/29 14:28:42 by taehykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_split(int *argc, char **argv, int i)
+void	op_ra(t_stack *a)
 {
-	int		cnt;
-	char	**arr;
-	int		k;
+	ft_putstr("ra\n");
+	if (!a->head || !a->head->next)
+		return ;
+	a->head = a->head->next;
+}
 
-	while (argv[i])
-	{
-		k = *argc;
-		arr = ft_split(argv[i], ' ');
-		cnt = 1;
-		if (arr[cnt])
-		{
-			while (arr[cnt])
-				cnt++;
-			*argc += (cnt - 1);
-			k = *argc;
-			argv[k++] = NULL;
-			while (k-- > i + cnt + 1)
-				argv[k - 1] = argv[k - cnt];
-			while (k > i)
-				argv[k-- - 1] = arr[--cnt];
-		}
-		i++;
-		free(arr);
-	}
+void	op_rb(t_stack *b)
+{
+	if (!b->head || !b->head->next)
+		return ;
+	b->head = b->head->next;
+	ft_putstr("rb\n");
+}
+
+void	op_rr(t_stack *a, t_stack *b)
+{
+	ft_putstr("rr\n");
+	op_ra(a);
+	op_rb(b);
 }

@@ -1,37 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_under_5.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehykim <taehykim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/29 14:28:07 by taehykim          #+#    #+#             */
+/*   Updated: 2022/07/29 14:28:08 by taehykim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-
-size_t	get_order_max(t_node *a, size_t node_size)
-{
-	size_t	i;
-	size_t	max_pos;
-
-	max_pos = 0;
-	i = 0;
-	while (i < node_size)
-	{
-		if (max_pos < a->order)
-			max_pos = a->order;
-		i++;
-		a = a->next;
-	}
-	return max_pos;
-}
-
-size_t	get_order_pos(t_node *a, size_t node_size, size_t order)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < node_size)
-	{
-		if (a->order == order)
-			return (i);
-		i++;
-		a = a->next;
-	}
-	return (0);
-}
 
 void	sort_case_2(t_stack *a)
 {
@@ -39,11 +18,8 @@ void	sort_case_2(t_stack *a)
 		op_sa(*a);
 }
 
-void	sort_case_3(t_stack *a)
-{
-	size_t	order_max;
-
-	order_max = get_order_max(a->head, 3);
+void	sort_case_3(t_stack *a, size_t order_max)
+{	
 	if (a->head->order == order_max)
 	{
 		if ((a->head->next)->order < (a->head->prev)->order)
@@ -65,10 +41,8 @@ void	sort_case_3(t_stack *a)
 			op_rra(a);
 	}
 	else if ((a->head->prev)->order == order_max)
-	{
 		if (a->head->order > (a->head->next)->order)
 			op_sa(*a);
-	}
 }
 
 void	sort_case_4(t_stack *a, t_stack *b, size_t node_size)
@@ -87,7 +61,7 @@ void	sort_case_4(t_stack *a, t_stack *b, size_t node_size)
 			op_rra(a);
 	}
 	op_pb(a, b);
-	sort_case_3(a);
+	sort_case_3(a, get_order_max(a->head, 3));
 	op_pa(a, b);
 }
 
@@ -125,14 +99,14 @@ void	sort_under_5(t_stack *a, t_stack *b, size_t node_size)
 	if (node_size == 2)
 		sort_case_2(a);
 	else if (node_size == 3)
-		sort_case_3(a);
+		sort_case_3(a, get_order_max(a->head, 3));
 	else if (node_size == 4)
 		sort_case_4(a, b, node_size);
 	else
 	{
 		sort_case_5(a, b, node_size);
 		op_pb(a, b);
-		sort_case_3(a);
+		sort_case_3(a, get_order_max(a->head, 3));
 		op_pa(a, b);
 		op_pa(a, b);
 	}

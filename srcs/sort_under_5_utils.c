@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_split.c                                      :+:      :+:    :+:   */
+/*   sort_under_5_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taehykim <taehykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/29 14:27:28 by taehykim          #+#    #+#             */
-/*   Updated: 2022/07/29 14:27:29 by taehykim         ###   ########.fr       */
+/*   Created: 2022/07/29 14:28:32 by taehykim          #+#    #+#             */
+/*   Updated: 2022/07/29 14:28:33 by taehykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_split(int *argc, char **argv, int i)
+size_t	get_order_max(t_node *a, size_t node_size)
 {
-	int		cnt;
-	char	**arr;
-	int		k;
+	size_t	i;
+	size_t	max_pos;
 
-	while (argv[i])
+	max_pos = 0;
+	i = 0;
+	while (i < node_size)
 	{
-		k = *argc;
-		arr = ft_split(argv[i], ' ');
-		cnt = 1;
-		if (arr[cnt])
-		{
-			while (arr[cnt])
-				cnt++;
-			*argc += (cnt - 1);
-			k = *argc;
-			argv[k++] = NULL;
-			while (k-- > i + cnt + 1)
-				argv[k - 1] = argv[k - cnt];
-			while (k > i)
-				argv[k-- - 1] = arr[--cnt];
-		}
+		if (max_pos < a->order)
+			max_pos = a->order;
 		i++;
-		free(arr);
+		a = a->next;
 	}
+	return (max_pos);
+}
+
+size_t	get_order_pos(t_node *a, size_t node_size, size_t order)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < node_size)
+	{
+		if (a->order == order)
+			return (i);
+		i++;
+		a = a->next;
+	}
+	return (0);
 }
