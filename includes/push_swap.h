@@ -40,13 +40,14 @@ void	init_node_order(t_stack *a, int argc);
 
 void	check_decimal(int argc, char **argv);
 void	check_reduplicate(int argc, t_node *node1);
-void	check_split(int *argc, char **argv, int i);
+void	check_split(int *argc, char **argv, int i, int k);
 void	check_sorted(t_node *node, size_t node_size);
 char	**ft_split(char const *s, char c);
 void	exit_perror(char *msg, int num);
 
 int		ft_atoi(const char *str);
 void	ft_putstr(char *s);
+size_t	ft_strlen(const char *s);
 
 void	swap_value(int *a, int *b);
 void	op_sa(t_stack a, int print);

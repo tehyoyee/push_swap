@@ -26,11 +26,10 @@ static void	ft_free(char **arr)
 	arr = NULL;
 }
 
-void	check_split(int *argc, char **argv, int i)
+void	check_split(int *argc, char **argv, int i, int k)
 {
 	int		cnt;
 	char	**arr;
-	int		k;
 
 	while (argv[i])
 	{

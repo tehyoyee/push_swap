@@ -38,7 +38,9 @@ int	main(int argc, char *argv[])
 	t_stack	a;
 	t_stack	b;
 
-	check_split(&argc, argv, 1);
+	if (argc <= 1)
+		exit_perror("Error\n", 1);
+	check_split(&argc, argv, 1, 0);
 	check_decimal(argc, argv);
 	init_stack(&a, &b, argc, argv);
 	init_node_order(&a, argc);
@@ -53,4 +55,5 @@ int	main(int argc, char *argv[])
 	}
 	free_stack(&a);
 	free_stack(&b);
+	system("leaks push_swap");
 }
