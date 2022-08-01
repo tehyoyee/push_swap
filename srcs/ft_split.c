@@ -76,7 +76,7 @@ static void	go_split(char **strs, char const *s, char c, int i)
 		if (strs[i] == 0)
 		{
 			ft_free(strs, i);
-			return ;
+			exit_perror("malloc error\n", 1);
 		}
 		j = 0;
 		k -= size;
@@ -99,7 +99,7 @@ char	**ft_split(char const *s, char c)
 	size = count(s, c);
 	strs = (char **)malloc(sizeof(char *) * (size + 1));
 	if (!strs)
-		return (NULL);
+		exit_perror("malloc error\n", 1);
 	i = 0;
 	go_split(strs, s, c, i);
 	return (strs);

@@ -36,8 +36,6 @@ void	check_split(int *argc, char **argv, int i)
 	{
 		k = *argc;
 		arr = ft_split(argv[i], ' ');
-		if (!arr)
-			exit_perror("malloc error\n", 1);
 		cnt = 1;
 		if (arr[cnt])
 		{

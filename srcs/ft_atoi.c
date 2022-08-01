@@ -37,6 +37,8 @@ int	ft_atoi(const char *str)
 	int	sign;
 
 	sign = 1;
+	if (!*str)
+		exit_perror("Error\n", 1);
 	while (*str == 32 || (9 <= *str && *str <= 13))
 		str++;
 	if (*str == '-' || *str == '+')
