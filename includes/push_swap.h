@@ -47,7 +47,6 @@ void	exit_perror(char *msg, int num);
 
 int		ft_atoi(const char *str);
 void	ft_putstr(char *s);
-size_t	ft_strlen(const char *s);
 
 void	swap_value(int *a, int *b);
 void	op_sa(t_stack a, int print);

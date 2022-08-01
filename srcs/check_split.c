@@ -12,15 +12,37 @@
 
 #include "push_swap.h"
 
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	char	*arr;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	arr = (char *)malloc(sizeof(char) * i + 1);
+	if (!arr)
+		return (NULL);
+	arr[i] = '\0';
+	i--;
+	while (i >= 0)
+	{
+		arr[i] = s1[i];
+		i--;
+	}
+	return (arr);
+}
+
 static void	ft_free(char **arr)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (arr[i])
 	{
 		free(arr[i]);
 		arr[i] = NULL;
+		i++;
 	}
 	free(arr);
 	arr = NULL;
@@ -44,9 +66,9 @@ void	check_split(int *argc, char **argv, int i, int k)
 			k = *argc;
 			argv[k++] = NULL;
 			while (k-- > i + cnt + 1)
-				argv[k - 1] = argv[k - cnt];
+				argv[k - 1] = (argv[k - cnt]);
 			while (k > i)
-				argv[k-- - 1] = arr[--cnt];
+				argv[k-- - 1] = ft_strdup(arr[--cnt]);
 		}
 		ft_free(arr);
 		i++;
