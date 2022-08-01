@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 	t_stack	b;
 
 	if (argc <= 1)
-		exit_perror("Error\n", 1);
+		exit(0);
 	check_split(&argc, argv, 1, 0);
 	check_decimal(argc, argv);
 	init_stack(&a, &b, argc, argv);
